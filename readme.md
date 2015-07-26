@@ -9,9 +9,11 @@ composer install
 php -S localhost:80 -t public
 open url localhost in your browser
 
-database using sqlite, essentially you don't
-need to install any database, and .env file already set up.
-
+>database using sqlite
+>create a database and inform .env
+>php artisan key:generate
+>php artisan migrate to create tables
+>php artisan db:seed to populate tables
 
 default user ['grkin2002@gmail.com' => '123']
 
