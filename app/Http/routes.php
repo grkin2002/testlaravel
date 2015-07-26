@@ -50,12 +50,12 @@ Route::group(['namespace'=>'Home'], function(){
 
 
 //edit and create post and news should be in the admin module,
-Route::group(['namespace'=>'Admin', 'prefix'=>'admin/board/{bid}'], function(){
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin/board/{bid}', 'middleware'=>'auth'], function(){
     Route::resource('post', 'PostController');
     Route::resource('news', 'NewsController');
 });
 
 //edit and create replies
-Route::group(['namespace'=>'Admin', 'prefix'=>'admin/post/{pid}'], function(){
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin/post/{pid}', 'middleware'=>'auth'], function(){
     Route::resource('reply', 'ReplyController');
 });
