@@ -12,6 +12,12 @@
 */
 
 
+// Route model binding
+Route::model('post','Post');
+Route::model('reply','Reply');
+Route::model('news', 'News');
+
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -44,13 +50,12 @@ Route::group(['namespace'=>'Home'], function(){
     Route::get('board/{bid}/post', array( 'as'=>'PostList', 'uses'=>'PostController@index'));
 
     //specific post under specific board, and replies, paginated.
+    //it is not a resource route, so there is no model binding
     Route::get('board/{bid}/news/{nid}', array( 'as'=>'NewsShow', 'uses'=>'NewsController@show'));
     Route::get('board/{bid}/post/{pid}', array( 'as'=>'PostShow', 'uses'=>'PostController@show'));
 });
 
-Route::model('post','Post');
-Route::model('reply','Reply');
-Route::model('news', 'News');
+
 
 //edit and create post and news should be in the admin module,
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin/board/{bid}', 'middleware'=>'auth'], function(){
@@ -61,4 +66,12 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin/board/{bid}', 'middleware'=
 //edit and create replies
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin/post/{pid}', 'middleware'=>'auth'], function(){
     Route::resource('reply', 'ReplyController');
+});
+
+
+Route::group(['namespace'=>'Admin', 'middleware'=>'auth'], function(){
+    // ajax vote url
+    Route::get('vote/agree/{pid}/{uid}', 'VoteController@agree');
+    Route::get('vote/oppose/{pid}/{uid}', 'VoteController@oppose');
+    Route::get('vote/neutral/{pid}/{uid}', 'VoteController@neutral');
 });

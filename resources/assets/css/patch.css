@@ -148,19 +148,37 @@
         color: #280848;
     }
 
-    .post-content{
-        font-family: "Consolas","sans-serif","monospace";
-        font-size:14px;
-        color: #286404;
-    }
 
-    .bg
-    {
+
+    .bg{
         background-image:url('../../image/bg.jpg');
         background-repeat:no-repeat;
         background-position:top;
     }
 
+    *{
+        webkit-box-sizing:border-box;
+        moz-box-sizing:border-box;
+        box-sizing:border-box;
+    }
+
+    .wrap{
+        padding-bottom:30px;
+        position:relative;
+    }
+
+    .post-topheader{
+        padding:15px;
+        background:#f6f6f6;
+    }
+
+    .post-content{
+        font-family: "Consolas","sans-serif","monospace";
+        font-size:14px;
+        color:#286404;
+        background:#f6f6ff;
+        padding:15px;
+    }
 
     html body,
     html input,

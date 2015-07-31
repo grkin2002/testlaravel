@@ -18,9 +18,10 @@ elixir(function(mix) {
     mix.styles([
         'bootstrap.min.css',
         'bootstrap-theme.min.css',
+        'flat-ui.min.css',
         'docs.min.css',
         'patch.css',
-        'flat-ui.min.css',
+
     ]);
 
     mix.scripts([
@@ -29,10 +30,11 @@ elixir(function(mix) {
         'flat-ui.min.js',
         'respond.min.js',
         'html5shiv.js',
+        'patch.js',
     ]);
 
     mix.copy('resources/assets/fonts/', 'public/build/fonts');
-    mix.copy('resources/assets/js/holder.js', 'public/js/holder.js');
+    // mix.copy('resources/assets/js/holder.js', 'public/js/holder.js');
 
 
 

@@ -5,7 +5,7 @@
 <h1>Post Your Opinion</h1>
 <hr>
 
-{!! Form::open(['route'=>['admin.board.{bid}.post.store','bid'=>2]]) !!}
+{!! Form::open(['route'=>['admin.board.{bid}.post.store','bid'=>$bid]]) !!}
     <div class="form-group">
         {!!Form::label('post_title', 'Title:') !!}
         {!!Form::text('post_title', null, ['class'=>'form-control']) !!}

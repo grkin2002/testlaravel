@@ -26,8 +26,14 @@ class PostController extends Controller
     }
 
 
-    public function show()
+    public function show( $bid, $pid)
     {
+        //view count plus 1
         //
+        //only find by pid, if you want to  throw an exception if not found, pls use firstOrFail()
+        $post = \App\Post::find($pid);
+        $post->view_amount++;
+        $post->update();
+        return view('home.post.show', compact('post'));
     }
 }

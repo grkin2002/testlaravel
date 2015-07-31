@@ -93,8 +93,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($bid, $post)
     {
-        //
+        $post->delete();
+        return Redirect::route('PostList', ['bid'=>$bid]);
     }
 }

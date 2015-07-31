@@ -40,6 +40,6 @@
 
       <!-- javascript merge together -->
       {!! Html::script( elixir("js/all.js") ) !!}
-      <!-- {!! Html::script('build/js/flat-ui.js') !!} -->
+
   </body>
 </html>
