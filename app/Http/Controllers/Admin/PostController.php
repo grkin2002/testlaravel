@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use Auth;
 use Redirect;
+use View;
 
 class PostController extends Controller
 {
@@ -67,9 +68,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit( $bid, $post)
     {
-        return view('admin.post.edit');
+
+        return View::make('admin.post.edit', compact('post'));
     }
 
     /**
@@ -79,9 +81,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update( $bid, $post)
     {
-        //
+        $post->update(Request::all());
+        return   Redirect::route('PostList', ['bid'=>$bid] );
     }
 
     /**
