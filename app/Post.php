@@ -10,8 +10,8 @@ class Post extends Model
 {
     use SoftDeletes;
 
+    protected $fillable =['post_title', 'content', 'board_id','user_id'];
 
-    protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
     public $timestamps = true;
 

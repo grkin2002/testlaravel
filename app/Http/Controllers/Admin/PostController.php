@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Request;
+use Auth;
+use Redirect;
 
 class PostController extends Controller
 {
@@ -24,9 +27,10 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create($bid)
     {
-        return view('admin.post.create');
+
+        return view('admin.post.create')->with('bid', $bid);
     }
 
     /**
@@ -35,9 +39,15 @@ class PostController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $bid)
     {
-        //
+
+        $input = Request::all();
+        $input['board_id'] = $bid;
+        $input['user_id'] = Auth::user()->id;
+
+        \App\Post::create($input);
+        return Redirect::route('PostList', ['bid'=>$bid] );
     }
 
     /**

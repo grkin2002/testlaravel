@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('post_title');
             $table->text('content');
-            $table->tinyInteger('status')->unsigned();
+            $table->tinyInteger('status')->unsigned()->default(0);
             $table->integer('view_amount')->default(0);
             $table->integer('agree_amount')->default(0);
             $table->integer('oppose_amount')->default(0);

@@ -48,6 +48,9 @@ Route::group(['namespace'=>'Home'], function(){
     Route::get('board/{bid}/post/{pid}', array( 'as'=>'PostShow', 'uses'=>'PostController@show'));
 });
 
+Route::model('post','Post');
+Route::model('reply','Reply');
+Route::model('news', 'News');
 
 //edit and create post and news should be in the admin module,
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin/board/{bid}', 'middleware'=>'auth'], function(){

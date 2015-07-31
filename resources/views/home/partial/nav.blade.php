@@ -14,15 +14,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">{!!Html::linkRoute('admin.board.{bid}.post.create','提意见', ['bid'=>2], array('class'=>'actived'))!!}</li>
+        <li class="active">{!!Html::linkRoute('admin.board.{bid}.post.create','提意见', ['bid'=>Cache::get('board_id_for_post')], array('class'=>'actived'))!!}</li>
         <li>{!!Html::linkRoute('NewsList', '汇新闻', ['bid'=>Cache::get('board_id_for_news')])!!}</li>
         <li>{!! Html::linkRoute('PostList', '八卦巷', ['bid'=>Cache::get('board_id_for_post')]) !!}</li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
+
         <div class="form-group">
-          <input type="text" class="form-control" autocomplete="off" placeholder="查找...">
+
+         <!--  <input type="text" class="form-control" autocomplete="off" placeholder="查找...">
           <span
-          <button class="btn btn-primary" type="submit">搜索</button>
+          <button class="btn btn-primary" type="submit">搜索</button> -->
         </div>
 
       </form>
