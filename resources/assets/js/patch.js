@@ -6,6 +6,9 @@ $('.js-agree').click(function (event) {
             return;
           }
 
+          //刷新所有的badage
+          $(this).siblings().children('span').text("");
+
           //找到第一个child
           var span = $(this).children('span:first-child');
           // var span = $(this).children().first();
@@ -27,6 +30,9 @@ $('.js-oppose').click(function (event) {
             return;
           }
 
+          //刷新所有的badage
+          $(this).siblings().children('span').text("");
+
           //找到第一个child
           var span = $(this).children('span:first-child');
           // var span = $(this).children().first();
@@ -47,6 +53,9 @@ $('.js-neutral').click(function (event) {
           if (!confirm('Are you sure you want to neutral(中立) this post?')) {
             return;
           }
+
+          //刷新所有的badage
+          $(this).siblings().children('span').text("");
 
           //找到第一个child
           var span = $(this).children('span:first-child');
