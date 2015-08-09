@@ -6,7 +6,7 @@
         <p>{!! Html::linkRoute('PostList', 'Post', ['bid'=>Cache::get('board_id_for_post')]) !!}
         >Post Detail
         </p>
-        <a href="{{ Request::url() }}" class="post-title">  <h4>{!! $post->post_title !!}</h4></a>
+        <a href="{{ Request::url() }}" class="post-title">  <h4>{{ $post->post_title }}</h4></a>
 
         <p>
             <span class="glyphicon glyphicon-user"></span> posted by {{ $post->user->name}} &nbsp&nbsp
@@ -15,7 +15,7 @@
     </div>
     <br>
     <div class="row post-content">
-        <p>{!! $post->content!!}</p>
+        <p>{{ $post->content}}</p>
     </div>
     <br>
     <hr>

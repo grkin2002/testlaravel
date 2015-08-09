@@ -9,18 +9,18 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->delete();
         App\User::create([
-            'name'=>'grkin2002',
-            'email'=>'grkin2002@gmail.com',
-            'password' => Hash::make('123'),
+            'name'=>'alex',
+            'email'=>'alex@gmail.com',
+            'password' => Hash::make('123456'),
             'type'=>'0',
             'location'=>'1',
 
             ]);
 
         App\User::create([
-            'name'=>'testuser',
-            'email'=>'testuser@gmail.com',
-            'password' => Hash::make('123'),
+            'name'=>'test',
+            'email'=>'test@email.com',
+            'password' => Hash::make('123456'),
             'type'=>'1',
             'location'=>'1',
             ]);

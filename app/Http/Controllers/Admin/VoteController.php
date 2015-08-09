@@ -2,72 +2,71 @@
 
 namespace App\Http\Controllers\Admin;
 
-
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Request;
+use Cache;
 
-class VoteController extends Controller
-{
-    //handle
-    private function handle($post_id, $user_id, $new_result)
-    {
+class VoteController extends Controller {
+	//handle
+	private function handle($post_id, $user_id, $new_result) {
 
-      $current_vote = \App\Vote::where('post_id','=', $post_id)->where('user_id', '=',$user_id)->first();
+		//remmeber the voted post id in cache
+		$post_id_array = Cache::get('voted_post');
+		if (!isset($post_id_array)) {
+			$post_id_array = array();
+		}
+		if (!in_array($post_id, $post_id_array, true)) {
+			$post_id_array[] = $post_id;
+		}
+		Cache::forever('voted_post', $post_id_array);
 
-        if(!isset($current_vote))
-        {
-            $input['post_id']=$post_id;
-            $input['user_id']=$user_id;
-            $input['vote_result'] = $new_result;
-            // create record in votes table
-            $current_vote = \App\Vote::create($input);
-            return " new vote";
+		//get or create a current vote record.
+		$current_vote = \App\Vote::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
 
-        }
-        else
-        {
-            //vote record existed, go to handle this situation
-            if( $current_vote->vote_result == $new_result)
-            {
-                $return = "not changed";
-                return $return;
-            }
-            else
-            {
-                $current_vote->vote_result = $new_result;
-                $current_vote->save();
-                 switch($new_result){
-                    case 1: return " that is true!";
-                            break;
-                    case 2: return " no, I don't think so!";
-                            break;
-                    case 3: return " I am not sure!";
-                            break;
-                    default:return " error";
-                }
-            }
-        }
-    }//end handle
+		if (!isset($current_vote)) {
+			$input['post_id'] = $post_id;
+			$input['user_id'] = $user_id;
+			$input['vote_result'] = $new_result;
+			// create record in votes table
+			$current_vote = \App\Vote::create($input);
+			return " new vote";
 
-    //receive ajax call agree
-    public function agree($pid, $uid){
-      $result =$this->handle($pid, $uid, "1");
-       return response( $result );
-    }
+		} else {
+			//vote record existed, go to handle this situation
+			if ($current_vote->vote_result == $new_result) {
+				$return = "not changed";
+				return $return;
+			} else {
+				$current_vote->vote_result = $new_result;
+				$current_vote->save();
+				switch ($new_result) {
+				case 1:return " that is true!";
+					break;
+				case 2:return " no, I don't think so!";
+					break;
+				case 3:return " I am not sure!";
+					break;
+				default:return " error";
+				}
+			}
+		}
+	} //end handle
 
-    //receive ajax call oppose
-    public function oppose($pid, $uid){
-      $result =$this->handle($pid, $uid, "2");
-       return response( $result );
-    }
+	//receive ajax call agree
+	public function agree($pid, $uid) {
+		$result = $this->handle($pid, $uid, "1");
+		return response($result);
+	}
 
-    //receive ajax call neutral
-    public function neutral($pid, $uid){
-      $result =$this->handle($pid, $uid, "3");
-       return response( $result );
-    }
+	//receive ajax call oppose
+	public function oppose($pid, $uid) {
+		$result = $this->handle($pid, $uid, "2");
+		return response($result);
+	}
 
+	//receive ajax call neutral
+	public function neutral($pid, $uid) {
+		$result = $this->handle($pid, $uid, "3");
+		return response($result);
+	}
 
 }

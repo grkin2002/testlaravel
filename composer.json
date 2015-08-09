@@ -13,7 +13,8 @@
         "graham-campbell/htmlmin": "^4.0",
         "roumen/sitemap": "^2.5",
         "barryvdh/laravel-debugbar": "^2.0",
-        "illuminate/html": "^5.0"
+        "illuminate/html": "^5.0",
+        "guzzlehttp/guzzle": "^6.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
