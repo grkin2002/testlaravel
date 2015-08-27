@@ -4,7 +4,7 @@
   ?>
 
 <!doctype html>
-<html lang="zh-cn">
+<html lang="zh-cn" >
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,10 +36,10 @@
 
       <!-- footer  -->
       @include('home.partial.footer')
-      @yield('footer')
 
       <!-- javascript merge together -->
       {!! Html::script( elixir("js/all.js") ) !!}
-
+      <!-- write your own javascript in the footer -->
+      @yield('footer')
   </body>
 </html>

@@ -8,15 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {!! Html::link('/', '汇侨街坊', array('class'=>'navbar-brand')) !!}
+      {!! Html::link('/', 'HUIQIAO', array('class'=>'navbar-brand')) !!}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">{!!Html::linkRoute('admin.board.{bid}.post.create','提意见', ['bid'=>Cache::get('board_id_for_post')], array('class'=>'actived'))!!}</li>
-        <li>{!!Html::linkRoute('NewsList', '汇新闻', ['bid'=>Cache::get('board_id_for_news')])!!}</li>
-        <li>{!! Html::linkRoute('PostList', '八卦巷', ['bid'=>Cache::get('board_id_for_post')]) !!}</li>
+        <li class="active">{!!Html::linkRoute('admin.board.{bid}.post.create','SPEAK', ['bid'=>Cache::get('board_id_for_post')], array('class'=>'actived'))!!}</li>
+        <li>{!!Html::linkRoute('NewsList', 'NEWS', ['bid'=>Cache::get('board_id_for_news')])!!}</li>
+        <li>{!! Html::linkRoute('PostList', 'TALK', ['bid'=>Cache::get('board_id_for_post')]) !!}</li>
+        <li>{!! Html::linkRoute('WaterFall', 'PIC') !!}</li>
+        <li>{!! Html::linkRoute('SearchIndex', 'SEARCH (Angularjs)') !!}</li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
 
@@ -34,23 +36,23 @@
 
         @if(Auth::check()&& Auth::user()->type==0 )
 
-            <span class='badge'>管理员  {{  Auth::user()->name }}</span>
+            <span class='badge'>Administrator  {{  Auth::user()->name }}</span>
             &nbsp&nbsp
             {!! Html::link('admin/dashboard', '管理面板', array('class'=>'btn btn-primary')) !!}
             &nbsp&nbsp
-            {!! Html::link('auth/logout', '离开', array('class'=>'btn btn-primary')) !!}
+            {!! Html::link('auth/logout', 'Logout', array('class'=>'btn btn-primary')) !!}
 
         @elseif(Auth::check())
 
-            <span class='badge'>欢迎你  {{ Auth::user()->name }}</span>
+            <span class='badge'>Welcome  {{ Auth::user()->name }}</span>
             &nbsp&nbsp
-            {!! Html::link('auth/logout', '离开', array('class'=>'btn btn-primary')) !!}
+            {!! Html::link('auth/logout', 'Logout', array('class'=>'btn btn-primary')) !!}
 
         @else
 
-            {!! Html::link('auth/register', '注册', array('class'=>'btn btn-primary')) !!}
+            {!! Html::link('auth/register', 'Register', array('class'=>'btn btn-primary')) !!}
             &nbsp&nbsp
-            {!! Html::link('auth/login', '登录', array('class'=>'btn btn-primary'))  !!}
+            {!! Html::link('auth/login', 'Login', array('class'=>'btn btn-primary'))  !!}
 
         @endif
           </h4>

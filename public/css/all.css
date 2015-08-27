@@ -89,9 +89,9 @@
     .list-item{
         position: relative;
         color:#999;
-        display:inline-block;
+        display:block;
         vertical-align: middle;
-
+        list-style: none;
     }
 
     .page-nav {
@@ -199,6 +199,19 @@
         background:#f6f6ff;
         padding:15px;
     }
+
+    .grid-item{
+        width:200px;
+        margin:10px;
+        float:left;
+    }
+
+    .grid-item--width2{
+        width:400px;
+        margin:10px;
+        float:left;
+    }
+
 
     html body,
     html input,

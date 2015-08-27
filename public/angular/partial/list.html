@@ -1,0 +1,15 @@
+
+
+    <form class="form-inline" novalidate>
+        <div class="form-group">
+            <input type="text"  class="form-control" autocomplete="off" placeholder="search..."ng-model="keyword" >
+            <button class="btn btn-info" ng-click="submit()">SEARCH</button>
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <div class="bs-callout bs-callout-info  list-item" ng-repeat="item in posts">
+           <a href="#/detail/{{item.id}}"> {{$index+1}} &nbsp {{item.post_title}} </a>
+        </div>
+    </div>
+

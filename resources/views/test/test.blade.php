@@ -1,5 +1,7 @@
-<h3>this is a test page</h3>
+@extends("home.layout")
 
-<?php
-$users = DB::table('users')->get();
-dd($users);
+@section('content')
+<h1>This is test</h1>
+
+
+@stop

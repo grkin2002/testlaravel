@@ -24,6 +24,8 @@ Route::get('/test', function () {
 	return view('test.test');
 });
 
+
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -51,6 +53,12 @@ Route::group(['namespace' => 'Home'], function () {
 	//posts under specific board, paginated
 	Route::get('board/{bid}/news', array('as' => 'NewsList', 'uses' => 'NewsController@index'));
 	Route::get('board/{bid}/post', array('as' => 'PostList', 'uses' => 'PostController@index'));
+	Route::get('search',		   array('as'=>'SearchIndex', 'uses'=>'PostController@search'));
+	// used by angular $http request, return json
+	Route::get('search/{keyword}', 'PostController@search');
+
+	Route::get('waterfall', array('as' => 'WaterFall', 'uses' => 'PhotoController@waterfall'));
+
 
 	//specific post under specific board, and replies, paginated.
 	//it is not a resource route, so there is no model binding

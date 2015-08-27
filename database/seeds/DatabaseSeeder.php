@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BoardsTableSeeder::class);
         $this->call(PostsTableSeeder::class);
         $this->call(RepliesTableSeeder::class);
+        $this->call(PhotoTableSeeder::class);
+
 
         Model::reguard();
     }

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Home;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Response;
+// use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
@@ -35,5 +34,18 @@ class PostController extends Controller
         $post->view_amount++;
         $post->update();
         return view('home.post.show', compact('post'));
+    }
+
+
+    public function search( $keyword ="" )
+    {
+        if(!isset($keyword) || empty($keyword))
+        {
+            return view('home.post.search');
+        }
+        $keyword = '%'.$keyword.'%';
+        $post = \App\Post::where('post_title', 'LIKE', $keyword )
+                    ->latest()->take(100);
+        return Response::json($post->get());
     }
 }

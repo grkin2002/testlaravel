@@ -18,7 +18,7 @@ class CreatePhotosTable extends Migration
             $table->integer('post_id');
             $table->string('photo_title',20);
             $table->string ('photo_url');
-            $table->timestamp('deleted_at');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
